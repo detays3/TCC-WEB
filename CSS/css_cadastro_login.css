@@ -1,0 +1,175 @@
+[data-tema="light"]
+{
+  --cor-de-fundo: hsl(206, 64%, 92%);
+  --cor-do-form: rgb(255, 255, 255);
+  --cor-do-botao: rgb(26, 26, 80);
+  --cor-fonte-1: black;
+  --cor-fonte-2: white;
+  color-scheme: light;
+}
+
+[data-tema="dark"] 
+{
+  --cor-de-fundo: #122946;
+  --cor-do-form: #424242;
+  --cor-do-botao: rgb(55, 144, 218);
+  --cor-da-borda:red;
+  color-scheme: dark;
+}
+
+* 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body 
+{
+  background-color: var(--cor-de-fundo);
+  padding: 10vh;
+}
+
+.logo_container 
+{
+  display: flex;               /* Usar flexbox para layout */
+  align-items: center;        /* Centraliza verticalmente */
+  justify-content: center;    /* Centraliza horizontalmente */
+  height: 2vh;              /* Define a altura do contêiner (opcional) */
+  margin: 50px;
+}
+
+#logo_tesouro 
+{
+  height: 18vh; 
+
+                /* Define a altura da imagem */
+}
+
+.main 
+{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5vh;
+  
+
+}
+
+.caixa_texto
+{
+
+  border-radius: 8px;
+  width: 400px;
+  height:240px;
+  color:#000000;
+  background-color: white;
+  margin-top:30vh;
+  text-align:center;
+  padding:30px;
+  
+   a{
+     
+     text-align:center;
+     
+   }
+
+}
+
+
+.main-login 
+{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10vh;  
+
+}
+
+form 
+{
+  background-color: var(--cor-do-form);
+  padding: 20px;
+  border-radius: 8px;
+  width:60vh;
+
+
+
+
+
+
+ 
+}
+
+#mostrar_erro{
+  background-color:#f6cece;
+  height:40px;
+  padding:10px;
+  text-align:center;}
+
+#titulo {
+  font-size: 30px;
+  margin-top: 2px;
+  text-align: center;
+  margin-bottom: 20px;
+ 
+}
+
+.CPF_CNPJ 
+{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.CPF_CNPJ div 
+{
+  display: flex;
+  flex-direction: column;
+}
+
+#data {
+  width: 40%;
+  font-size: 16px;
+}
+
+input 
+{
+  width: 100%;
+  height: 25px;
+  display: block;
+  margin: 5px 0;
+}
+
+#botao 
+{
+  width: 100%;
+  height: 40px;
+  font-size: 25px;
+  color: var(--cor-fonte-2);
+  background-color: var(--cor-do-botao);
+  border: none;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+#botao_login
+{
+  width: 100%;
+  height: 40px;
+  font-size: 25px;
+  color: var(--cor-fonte-2);
+  background-color: var(--cor-do-botao);
+  border: none;
+  border-radius: 10px;
+  margin: 10px 0;
+
+}
+
+#botao:hover {
+  background-color: rgb(49, 102, 182);
+  opacity: 0.9;
+}

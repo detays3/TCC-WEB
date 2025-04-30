@@ -1,0 +1,214 @@
+[data-tema="light"] {
+    --cor-de-fundo: hsla(0, 0%, 100%, 0.903);
+    --cor-do-botao: rgb(26, 26, 80);
+    --cor-fonte-1: black;
+    --cor-header-footer: rgba(211, 232, 247, 0.664);
+    --cor-destaque: rgba(0, 100, 167, 0.726);
+    color-scheme: light;
+}
+
+[data-tema="dark"] {
+    --cor-de-fundo: #353535;
+    --cor-fonte-1: white;
+    --cor-do-botao: rgb(32, 103, 161);
+    --cor-header-footer: #0e3c57;
+    --cor-destaque: #0270a3;
+    color-scheme: dark;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html {
+    color-scheme: light dark;
+}
+
+/* Estilo geral */
+body {
+    color: var(--cor-fonte-1);
+    background-color: var(--cor-de-fundo);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: var(--cor-header-footer);
+    padding: 5px 20px;
+    height: 8vh;
+    font-weight: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+header img {
+    height: 52px;
+    width: auto;
+}
+
+/* Itens da esquerda */
+.itens_esquerda {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Itens da direita */
+.itens_direita {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: auto;
+}
+
+.itens_direita a,
+.itens_esquerda a {
+    text-decoration: none;
+    color: var(--cor-fonte-1);
+    padding: 10px 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.itens_direita a:hover,
+.itens_esquerda a:hover {
+    background-color: var(--cor-destaque);
+}
+
+/* Botão de tema */
+#btn_tema {
+    border: none;
+    background-color: transparent;
+    margin: 5px;
+    color: var(--cor-fonte-1);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn_tema #icon_tema {
+    font-size: 18px !important;
+}
+
+/* Estilos do main */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    position: relative;
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../Imagens/background_lading_page.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.texto_introdutorio {
+    text-align: left;
+    margin: 30vh 90px 70vh;
+    top: 8px;
+}
+
+.texto_introdutorio h1 {
+    font-size: 40px;
+}
+
+.texto_introdutorio p {
+    font-size: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--cor-header-footer);
+    padding: 10px 30px;
+    height:auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    margin-top: auto; /* Empurra o footer para o final da página */
+}
+
+/* Container dos outros itens (à esquerda) */
+.outros_itens {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+}
+
+/* Estilo do logo */
+.outros_itens img {
+    height: 150px;
+    max-height: 200px;
+    width: 24%;
+}
+
+/* Lista de itens (links, etc.) */
+.outros_itens ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+/* Itens da lista */
+.outros_itens ul li {
+    display: flex;
+    align-items: center;
+}
+
+/* Redes sociais (à direita) */
+.redes_sociais {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: auto;
+}
+
+.redes_sociais ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.redes_sociais ul li {
+    display: flex;
+    flex-direction: row;
+}
+
+.redes_sociais ul li a {
+    text-decoration: none;
+    color: var(--cor-fonte-1);
+}
+
+.redes_sociais ul li:hover {
+    background-color: var(--cor-destaque);
+}

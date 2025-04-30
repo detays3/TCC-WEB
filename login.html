@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="CSS/css_cadastro_login.css">
+    <script src="JS/mostrarerros.js"></script>
+    <script src="JS/mudar_tema.js"></script>
+</head>
+<body>
+    <div class="logo_container">
+        <img id="logo_tesouro" src="Imagens/logo_tcc-removebg-preview.png">
+    </div>
+
+    <div class="main-login">
+         <div id="titulo"><label>Login</label></div><br>
+
+        <form action="PHP/login.php" method="post" class="form-login">
+            <br>
+    
+           
+
+            <label for="nome_login">Nome:</label><br>
+
+            <input type="text" name="nome_login" id="nome" required><br>
+            
+            <label for="log_pessoa">CPF/CNPJ:</label><br>
+            <input type="text" name="log_pessoa" id="pessoafj" required><br>
+            <label for="senha_log">Senha:</label><br>
+            <input type="password" name="senha_log" id="senha" required><br>
+            <button type="submit" name="botao" value="logar" id="botao" >Logar</button><br>
+
+
+
+            
+            <div id="linha-divisoria"></div>
+            <a href="cadastro.html">Cadastrar</a> | 
+            <a href="recuperar_senha.php">Esqueceu a senha?</a>
+        </form>
+    </div>
+</body>
+</html>

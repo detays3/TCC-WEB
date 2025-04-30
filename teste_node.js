@@ -1,5 +1,26 @@
-const string='nome=dora&idade=10';
+<?php
 
-const url=  new URLSearchParams(string);
+include 'validar_CPF.php';
 
-console.log(url);
+
+$CPF_TESTE=75875187034;
+
+$validar_cpf = new Validar($CPF_TESTE);
+
+
+
+if ($validar_cpf->ValidarCPF($CPF_TESTE)) 
+     {
+         echo 'CPF válido';
+     }
+      else 
+     {
+         echo 'CPF inválido';
+     }
+
+
+
+
+
+
+?>

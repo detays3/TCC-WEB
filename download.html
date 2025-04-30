@@ -10,83 +10,72 @@
     <script src="https://kit.fontawesome.com/9010bd4d09.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
     <div id="pag-conteudo">
-
         <div class="overlay"></div> 
 
+        <!-- Header -->
         <div id="header-container">
             <header>
+                <a href="pag_principal.html">
+                    <img src="Imagens/logo_tcc-removebg-preview.png" alt="Logo" width="70px" height="65px">
+                </a>
 
-                <a href="pag_principal.html" ><img src="/Imagens/logo_tcc-removebg-preview.png" alt="Logo" width="70px" height="65px"></a>
+                <div class="itens_esquerda">
+                    <a href="download.html" id="itens">Download</a>
+                    <a id="itens" href="">Planos</a>
+                    <a href="#" id="itens">Desenvolvedores</a>
+                </div>
 
+                <!-- Botão para abrir o menu -->
                 <div class="itens_direita">
-                    
-                    <a id="itens">Download</a>
-                    <a id="itens">Atualizações</a>
-                    <a id="itens">Documentação</a>
-                  
-                    <button id="btn_tema"><i class="fa-solid fa-sun"id="icon_tema" style="height:10px"></button></i>
+                    <button id="btn_tema">
+                        <i class="fa-solid fa-sun" id="icon_tema"></i>
+                    </button>
+                    <a id="itens" href="login.html">Logar</a>
+                    <a id="itens" href="cadastro.html">Cadastrar</a>
                 </div>
             </header>
         </div>
-   
+
+        <!-- Main -->
         <div id="main-container">
             <main>
-
-                <h1>Baixe TesouroAzul pelo computador ou mobile</h1>
-
-             
-                <div class="plataformas-disponiveis">
-                    <div class="download_desktop">
-                        <img src="Imagens/computador.png" alt="Desktop">
-                        <div class="baixar_software">
-                            <a href="arquivo_teste.zip" download="arquivo_teste.zip">Baixar para Windows</a>
-                        </div>
-                    </div>
-                
-                  <div class="baixar_qr_code">
-                    <img src="Imagens/Untitled.jpg">
-                  </div>
-
+                <div class="texto_introdutorio">
+                    <h1>Gerencie<br> seu negócio com facilidade</h1><br>
+                    <p>
+                        Tesouro azul é um facilitador para<br> de gerenciamento de produtos de todos os tipos<br> 
+                        podendo ser baixado gratuitamente pelo celular e computador <br>
+                    </p><br>  
+                    <button>W</button>
+                </div>   
             </main>
-
         </div>
 
-         
+        <!-- Footer -->
         <footer>
-            <div class="lista_itens">
-
-                <div class="outros_itens">
-                    <ul>
-                        <li>@###</li>
-                        <li>Politica de privacidade</li>
-                        <li>Suporte</li>
-                        <li>Termos de uso</li>
-                    </ul>
-                </div>
-
-                <div class="redes_sociais">
-                    <ul>
-
-                          <li>@TesouroAzul</li>
-                          <li>  <a><i class="fa-brands fa-bluesky"></i></a></li>
-                          <li> <a><i class="fa-brands fa-github"></i></a></li>
-                          <li> <a ><i class="fa-brands fa-linkedin"></i></a></li>
-                        
-                    </ul>
+            <!-- Outros itens (à esquerda) -->
+            <div class="outros_itens">
+                <img src="Imagens/Logo_tesouro_azul2-removebg-preview.png" alt="Logo">
+                <ul>
+                    <li>Política de privacidade</li>
+                    <li>Suporte</li>
+                    <li>Termos de uso</li>
+                </ul>
+            </div>
         
-                </div>
-                  
-            </div>  
+            <!-- Redes sociais (à direita) -->
+            <div class="redes_sociais">
+                <ul>
+                    <li>@TesouroAzul</li>
+                    <li><a><i class="fa-brands fa-bluesky"></i></a></li>
+                    <li><a><i class="fa-brands fa-github"></i></a></li>
+                    <li><a><i class="fa-brands fa-linkedin"></i></a></li>
+                </ul>
+            </div>
         </footer>
-
-
-
     </div>
 
     <!-- Link para o arquivo JavaScript externo -->
     <script src="JS/mudar_tema.js"></script>
-
 </body>
 </html>

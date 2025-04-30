@@ -1,72 +1,169 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/css_cadastro_login.css">
-    <title>Cadastro</title>
-    <script src="JS/mostrarerros.js"></script>
-    <script src="JS/mudar_tema.js"></script>
-   
-      
-    
-    </script>
-</head>
-<body>
+[data-tema="light"] {
+  --cor-de-fundo: hsl(206, 64%, 92%);
+  --cor-do-form: rgb(255, 255, 255);
+  --cor-do-botao: rgb(26, 26, 80);
+  --cor-fonte-1: black;
+  --cor-fonte-2: white;
+  color-scheme: light;
+}
 
-    <div class="logo_container">
-        <img id="logo_tesouro" src="Imagens/logo_tcc-removebg-preview.png"><br><br>
-        
-        
-    </div>
-    <div class="main">
-        <div id="titulo"><label>Cadastro</label></div>
-        <form action="PHP/cadastro.php" method="post" class="form-cadastro">
+[data-tema="dark"] {
+  --cor-de-fundo: #122946;
+  --cor-do-form: #424242;
+  --cor-do-botao: rgb(55, 144, 218);
+  --cor-da-borda: red;
+  color-scheme: dark;
+}
 
-       
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
 
+body {
+  background-color: var(--cor-de-fundo);
+  padding: 5vh 10px; /* Reduzi o padding vertical e mantive pequeno nas laterais */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-            <label for="nome_usuario">Nome(*)</label>
-            <input type="text" name="nome_usuario" id="nome" required>
+.logo_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%;
+}
 
-            <div class="CPF_CNPJ">   
-                <div>
-                    <label for="CPF">CPF(*)</label>
-                    <input type="text" name="CPF_usuario" id="CPF">
-                </div>
-                <div>
-                    <label for="CNPJ">CNPJ</label>
-                    <input type="text" name="CNPJ_usuario" id="CNPJ" >
-                </div>
-            </div>
-            <label for="dta_nascimento">Data de nascimento</label> 
-                   <input type="date" name="dta_nascimento" id="data" required>
-    
+#logo_tesouro {
+  height: 18vh;
+  max-height: 120px; /* Limite máximo para telas muito grandes */
+}
 
-            <div class="Itens"></div>
-            <label for="email_usuario">E-mail</label>
-            <input type="text" name="email_usuario" id="email_cad" required>
+.main, .main-login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2vh;
+  width: 100%;
+  max-width: 600px; /* Largura máxima para o conteúdo principal */
+  padding: 0 20px;
+}
 
-            <label for="conf_email">Confirmar e-mail</label>
-            <input type="email" name="conf_email" id="email_conf" required>
+.caixa_texto {
+  border-radius: 8px;
+  width: 100%;
+  color: #000000;
+  background-color: white;
+  margin-top: 20vh;
+  text-align: center;
+  padding: 30px;
+  max-width: 600px;
+}
 
-            <label for="senha_cad">Senha</label>
-            <input type="password" name="senha_cad" id="senha" placeholder="Mínimo 8 caracteres" required>
+.caixa_texto a {
+  text-align: center;
+}
 
-            <label for="conf_senha">Confirmar Senha</label>
-            <input type="password" name="conf_senha" id="confsenha"placeholder="Mínimo 8 caracteres" required><br>
-            
-            <div id="mostrar_erro"></div>
+.form-cadastro, form {
+  background-color: var(--cor-do-form);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px; /* Largura máxima fixa para os formulários */
+  margin: 0 auto; /* Centraliza o formulário */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
+#mostrar_msg {
+  background-color: #f6cece;
+  height: 40px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
 
-        
+#titulo {
+  font-size: 30px;
+  margin-top: 2px;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-            <input type="submit" value="Cadastrar" id="botao" >
+.CPF_CNPJ {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  width: 100%;
+  margin: 10px 0;
+}
 
-            <div>
-                <label>Já possui cadastro?<a href="login.html">Faça seu login!</a></label>
-            </div>
-        </form>
-    </div>
-</body>
-</html>
+.CPF_CNPJ div {
+  display: flex;
+  flex-direction: column;
+}
+
+#data {
+  width: 40%;
+  font-size: 16px;
+}
+
+input {
+  width: 100%;
+  height: 40px; /* Aumentei a altura para melhor usabilidade */
+  display: block;
+  margin: 5px 0;
+  padding: 0 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#botao, #botao_login {
+  width: 100%;
+  height: 50px; /* Aumentei a altura do botão */
+  font-size: 20px; /* Reduzi um pouco o tamanho da fonte */
+  color: var(--cor-fonte-2);
+  background-color: var(--cor-do-botao);
+  border: none;
+  border-radius: 10px;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#botao:hover, #botao_login:hover {
+  background-color: rgb(49, 102, 182);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Media query para telas pequenas */
+@media (max-width: 600px) {
+  body {
+    padding: 2vh 10px;
+  }
+  
+  .logo_container {
+    margin: 10px 0;
+  }
+  
+  #logo_tesouro {
+    height: 15vh;
+  }
+  
+  .CPF_CNPJ {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  #data {
+    width: 100%;
+  }
+}

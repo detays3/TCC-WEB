@@ -1,5 +1,4 @@
-[data-tema="light"]
-{
+[data-tema="light"] {
   --cor-de-fundo: hsl(206, 64%, 92%);
   --cor-do-form: rgb(255, 255, 255);
   --cor-do-botao: rgb(26, 26, 80);
@@ -8,116 +7,96 @@
   color-scheme: light;
 }
 
-[data-tema="dark"] 
-{
+[data-tema="dark"] {
   --cor-de-fundo: #122946;
   --cor-do-form: #424242;
   --cor-do-botao: rgb(55, 144, 218);
-  --cor-da-borda:red;
+  --cor-da-borda: red;
   color-scheme: dark;
 }
 
-* 
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Arial', sans-serif;
 }
 
-body 
-{
+body {
   background-color: var(--cor-de-fundo);
-  padding: 10vh;
+  padding: 5vh 10px; /* Reduzi o padding vertical e mantive pequeno nas laterais */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.logo_container 
-{
-  display: flex;               /* Usar flexbox para layout */
-  align-items: center;        /* Centraliza verticalmente */
-  justify-content: center;    /* Centraliza horizontalmente */
-  height: 2vh;              /* Define a altura do contêiner (opcional) */
-  margin: 50px;
+.logo_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%;
 }
 
-#logo_tesouro 
-{
-  height: 18vh; 
-
-                /* Define a altura da imagem */
+#logo_tesouro {
+  height: 18vh;
+  max-height: 120px; /* Limite máximo para telas muito grandes */
 }
 
-.main 
-{
+.main, .main-login {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 5vh;
-  
-
+  margin-top: 2vh;
+  width: 100%;
+  max-width: 600px; /* Largura máxima para o conteúdo principal */
+  padding: 0 20px;
 }
 
-.caixa_texto
-{
-
+.caixa_texto {
   border-radius: 8px;
-  width: 400px;
-  height:240px;
-  color:#000000;
+  width: 100%;
+  color: #000000;
   background-color: white;
-  margin-top:30vh;
-  text-align:center;
-  padding:30px;
-  
-   a{
-     
-     text-align:center;
-     
-   }
-
+  margin-top: 20vh;
+  text-align: center;
+  padding: 30px;
+  max-width: 600px;
 }
 
-
-.main-login 
-{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 10vh;  
-
+.caixa_texto a {
+  text-align: center;
 }
 
-form 
-{
+.form-cadastro, form {
   background-color: var(--cor-do-form);
   padding: 20px;
   border-radius: 8px;
-  width:60vh;
-
-
-
-
-
-
- 
+  width: 100%;
+  max-width: 500px; /* Largura máxima fixa para os formulários */
+  margin: 0 auto; /* Centraliza o formulário */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-#mostrar_erro{
-  background-color:#f6cece;
-  height:40px;
-  padding:10px;
-  text-align:center;}
+#mostrar_msg {
+  background-color: #f6cece;
+  height: 40px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
 
 #titulo {
   font-size: 30px;
   margin-top: 2px;
   text-align: center;
   margin-bottom: 20px;
- 
 }
 
-.CPF_CNPJ 
-{
+.CPF_CNPJ {
   display: flex;
   flex-direction: row;
   gap: 15px;
@@ -125,8 +104,7 @@ form
   margin: 10px 0;
 }
 
-.CPF_CNPJ div 
-{
+.CPF_CNPJ div {
   display: flex;
   flex-direction: column;
 }
@@ -136,40 +114,56 @@ form
   font-size: 16px;
 }
 
-input 
-{
+input {
   width: 100%;
-  height: 25px;
+  height: 40px; /* Aumentei a altura para melhor usabilidade */
   display: block;
   margin: 5px 0;
+  padding: 0 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-#botao 
-{
+#botao, #botao_login {
   width: 100%;
-  height: 40px;
-  font-size: 25px;
+  height: 50px; /* Aumentei a altura do botão */
+  font-size: 20px; /* Reduzi um pouco o tamanho da fonte */
   color: var(--cor-fonte-2);
   background-color: var(--cor-do-botao);
   border: none;
   border-radius: 10px;
-  margin: 10px 0;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-#botao_login
-{
-  width: 100%;
-  height: 40px;
-  font-size: 25px;
-  color: var(--cor-fonte-2);
-  background-color: var(--cor-do-botao);
-  border: none;
-  border-radius: 10px;
-  margin: 10px 0;
-
-}
-
-#botao:hover {
+#botao:hover, #botao_login:hover {
   background-color: rgb(49, 102, 182);
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Media query para telas pequenas */
+@media (max-width: 600px) {
+  body {
+    padding: 2vh 10px;
+  }
+  
+  .logo_container {
+    margin: 10px 0;
+  }
+  
+  #logo_tesouro {
+    height: 15vh;
+  }
+  
+  .CPF_CNPJ {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  #data {
+    width: 100%;
+  }
 }

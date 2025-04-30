@@ -1,60 +1,40 @@
 <?php
 session_start();
 include 'conexao.php';
-
-
-
-
-
+require 'selects.php';
+include 'validacao.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nome = $_POST['nome_usuario'];
-    $CPF = $_POST['CPF_usuario'];
-    $CNPJ = $_POST['CNPJ_usuario'];
-    $dta = $_POST['dta_nascimento'];
-    $email = $_POST['email_usuario'];
-    $email_conf = $_POST['conf_email'];
-    $senha = $_POST['senha_cad'];
+    // Receber e sanitizar os dados
+    $nome = filter_input(INPUT_POST, 'nome_usuario', FILTER_SANITIZE_STRING);
+    $CPF = filter_input(INPUT_POST, 'CPF_usuario', FILTER_SANITIZE_STRING);
+    $CNPJ = filter_input(INPUT_POST, 'CNPJ_usuario', FILTER_SANITIZE_STRING);
+    $dta_nasc = filter_input(INPUT_POST, 'dta_nascimento', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email_usuario', FILTER_SANITIZE_EMAIL);
+    $email_conf = filter_input(INPUT_POST, 'conf_email', FILTER_SANITIZE_EMAIL);
+    $senha = $_POST['senha_cad'];  // Não sanitizar a senha para não alterar caracteres
     $senha_conf = $_POST['conf_senha'];
 
-    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-    $erro=" ";
+    // Criar instância do validador
+    $validador = new ValidarCadastro($nome, $CPF, $CNPJ, $dta_nasc, $email, $email_conf, $senha, $senha_conf, $conn);
 
-    // Validações
-    if ($senha != $senha_conf) 
-    {
-        $erro = "Erro. As senhas estão diferentes.";
-    } 
-    elseif (strlen($CPF) == 0 || strlen($CPF) < 11) 
-    {
-        $erro = "Número de carácteres insuficiente no campo CPF/CNPJ.";
-    }
-     elseif ($email != $email_conf)
-    {
-        $erro = "Erro. Os emails não coincidem.";
-    } 
+    // Realizar validação e capturar os erros
+    $erros = $validador->validacao();
 
-    else
-    {
-        // Inserir no banco de dados
-        $comando = $conn->prepare("INSERT INTO tb_cadastro (nome_cadastro, CPF_cadastro, CNPJ_cadastro, dta_nasc_cadastro, email_cadastro, senha_cadastro) 
-                                   VALUES (?, ?, ?, ?, ?, ?)");
+    if (empty($erros)) {
+        // Se validação OK, preparar dados para inserção
+        $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+        $dta_nasc_mysql = date('Y-m-d', strtotime($dta_nasc));
 
-        if ($comando === false) 
-        {
-            $erro = "Erro ao preparar a query: " . $conn->error;
-        } 
-        else
-        {
-            $comando->bind_param("ssssss", $nome, $CPF, $CNPJ, $dta, $email, $senha_hash);
+        try {
+            $comando = inserir_cadastro($conn, $nome, $CPF, $CNPJ, $dta_nasc_mysql, $email, $senha_hash);
 
-            if ($comando->execute()) 
-            {
+            if($comando && $comando->execute()) {
+                // Limpar dados sensíveis
+                unset($senha, $senha_conf, $senha_hash);
                 
-                
-                
-                echo"
-                <!DOCTYPE html>
+                // Cadastro bem-sucedido (mantendo seu HTML original)
+                echo "<!DOCTYPE html>
                       <html lang='pt-BR'>
                       <head>
                           <meta charset='UTF-8'>
@@ -63,47 +43,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           <title>Cadastro realizado com sucesso!</title>
                       </head>
                       <body>
-
                       <div class='main'>
                           <div class='caixa_texto'>
                               <h1>Cadastro realizado com sucesso</h1><br>
                               <a href='../login.html'>Fazer login</a>
                           </div>
-                       </div>
+                      </div>
                       </body>
                       </html>";
-                // Redireciona para uma página de sucesso
                 exit();
-            } 
-
-            elseif($comando = 1 ){
-
-                $erro="CPF já em uso";
-
+            } else {
+                throw new Exception("Erro na execução do SQL");
             }
-
-
-            
-            else
-            {
-                $erro = "Erro ao cadastrar: " ;
-            }
-         
-
-            $conn->close();
+        } catch (Exception $e) {
+            error_log("Erro no cadastro: " . $e->getMessage());
+            $erro = "Erro ao processar seu cadastro. Por favor, tente novamente.";
         }
-
-        
+    } else {
+        // Caso existam erros de validação
+        $_SESSION['erros_cadastro'] = $erros;  // Armazena erros na sessão
+        $erro = "Dados inválidos. Verifique os campos.";
     }
 
-    // Se houver erro, redireciona de volta para o formulário com a mensagem de erro
-    if (!empty($erro)) {
-      
+    // Se chegou aqui, houve algum erro
+    if (!headers_sent()) {
         header("Location: ../cadastro.html?erro=" . urlencode($erro));
-     
-      
-        exit();
     }
+    exit();
 }
 
 $conn->close();
